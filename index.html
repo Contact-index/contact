@@ -2,119 +2,180 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Coco Master Property</title>
     
     <meta property="og:title" content="Contact Coco Master Property">
-    <meta property="og:description" content="รวมทุกช่องทางติดต่อเราไว้ในที่เดียว">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop">
+    <meta property="og:description" content="รวมทุกช่องทางติดต่อเราไว้ในที่เดียว Premium Property Catalog">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/609/609803.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* กำหนดตัวแปรสีตามธีมใหม่ (สว่าง/ฟ้า/ขาว) */
         :root {
-            --gold: #d4af37;
-            --dark-bg: #0a0a0a;
-            --glass: rgba(255, 255, 255, 0.08);
+            --bg-color: #E8F0F9; /* สีพื้นหลังฟ้าอ่อน เหมือนเว็บตัวอย่าง */
+            --container-bg: #FFFFFF; /* พื้นหลังกล่องสีขาว */
+            --text-primary: #222222; /* สีตัวอักษรเข้ม */
+            --text-secondary: #666666; /* สีตัวอักษรรอง */
+            --border-color: #E0E0E0; /* สีเส้นคั่นบางๆ */
+            
+            /* สีประจำแบรนด์สำหรับไอคอน */
+            --line-color: #00B900;
+            --whatsapp-color: #25D366;
+            --fb-color: #1877F2;
+            --ig-color: #E4405F;
+            --tiktok-color: #000000;
+            --call-color: #FF9900;
         }
 
         * { box-sizing: border-box; }
 
-        body {
-            font-family: 'Kanit', sans-serif;
-            background-color: var(--dark-bg);
-            background-image: radial-gradient(circle at top right, #1e293b, #000000);
-            color: white;
+        body, html {
+            height: 100%; /* บังคับความสูงเต็มหน้าจอ */
             margin: 0;
+            padding: 0;
+            overflow: hidden; /* ป้องกันการเลื่อนหน้าจอ */
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             display: flex;
             justify-content: center;
-            min-height: 100vh;
+            align-items: center;
         }
 
+        /* คอนเทนเนอร์หลัก ออกแบบให้เหมือนการ์ดสีขาว */
         .container {
-            width: 100%;
-            max-width: 450px;
-            padding: 50px 20px;
+            background-color: var(--container-bg);
+            width: 95%; /* เกือบเต็มความกว้างมือถือ */
+            max-width: 400px;
+            height: 96vh; /* ใช้ความสูง 96% ของหน้าจอ */
+            max-height: 700px; /* จำกัดความสูงไม่ให้ยืดเกินไปในจอยาวๆ */
+            border-radius: 16px; /* มุมโค้งมน */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* เงาบางๆ ให้ดูมีมิติ */
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* จัดระยะห่าง บน-กลาง-ล่าง ให้พอดี */
             text-align: center;
         }
 
-        .logo-area img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            padding: 5px;
+        /* ส่วนหัว (โลโก้และชื่อ) - ปรับให้เล็กลงและกระชับ */
+        .header-area { flex-shrink: 0; }
+        .logo-img {
+            width: 80px; /* ลดขนาดโลโก้ลง */
+            height: 80px;
+            margin-bottom: 10px;
+            /* ลบเส้นขอบสีทองออก เพื่อความคลีน */
+        }
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+            color: var(--text-primary);
+        }
+        .subtitle {
+            font-weight: 300;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: 2px; margin: 10px 0 5px; color: var(--gold); }
-        .subtitle { font-weight: 200; color: #888; font-size: 0.9rem; margin-bottom: 40px; }
+        /* พื้นที่วางปุ่ม - ให้ยืดหยุ่นตามพื้นที่ที่เหลือ */
+        #link-container-wrapper {
+            flex-grow: 1; /* ขยายให้เต็มพื้นที่ตรงกลาง */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* จัดปุ่มให้อยู่กึ่งกลางแนวตั้ง */
+            overflow-y: auto; /* เผื่อไว้กรณีปุ่มเยอะจริงๆ */
+        }
 
-        /* ส่วนของปุ่มที่ดึงมาจาก Sheet */
         #link-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            /* ใช้ gap น้อยๆ เพื่อให้ปุ่มชิดกัน ประหยัดพื้นที่ */
+            gap: 8px; 
         }
 
+        /* สไตล์ปุ่มแบบใหม่ (List View แบบ LINE) */
         .link-card {
             display: flex;
             align-items: center;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 16px 20px;
+            background: var(--container-bg);
+            /* เส้นคั่นด้านล่างบางๆ */
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 10px;
             text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            opacity: 0; /* สำหรับทำ Animation ตอนโหลด */
-            transform: translateY(20px);
+            color: var(--text-primary);
+            transition: background 0.2s;
+            /* ลบสไตล์เดิมออก (ขอบมน, เส้นสีข้างๆ) */
+            border-radius: 0;
+            border-left: none !important; 
         }
 
-        .link-card.show {
-            opacity: 1;
-            transform: translateY(0);
+        /* ลบเส้นคั่นของปุ่มสุดท้าย */
+        .link-card:last-child { border-bottom: none; }
+
+        .link-card:active { background-color: #f5f5f5; } /* เอฟเฟกต์ตอนกด */
+
+        /* พื้นที่ไอคอนด้านซ้าย */
+        .icon-box {
+            font-size: 28px; /* ขนาดไอคอนแบรนด์ */
+            width: 40px;
+            text-align: center;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
         }
 
-        .link-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--gold);
-            transform: scale(1.02);
+        /* ข้อความบนปุ่ม */
+        .label-text {
+            font-size: 1rem;
+            font-weight: 400;
+            flex-grow: 1;
+            text-align: left;
         }
 
-        .icon-box { font-size: 24px; width: 40px; text-align: center; margin-right: 15px; }
-        .label-text { font-size: 1.1rem; flex-grow: 1; text-align: left; }
+        /* ลูกศรด้านขวา */
+        .arrow-icon {
+            color: #CCCCCC;
+            font-size: 14px;
+        }
 
-        /* Loading Spinner */
+        /* Loading Spinner (สีเทาเรียบๆ) */
         .loader {
             border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--gold);
+            border-top: 3px solid #888;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 30px; height: 30px;
             animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-top: 20px;
+            margin: 20px auto;
         }
-
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .footer { margin-top: 50px; font-size: 0.7rem; color: #555; letter-spacing: 1px; }
+        /* ส่วนท้าย - ปรับให้เล็กลง */
+        .footer {
+            flex-shrink: 0;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #999;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="logo-area">
-        <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Coco Master Logo">
+    <div class="header-area">
+        <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Coco Master Logo" class="logo-img">
         <h1>COCO MASTER</h1>
         <div class="subtitle">PREMIUM PROPERTY CATALOG</div>
     </div>
 
-    <div id="loading" class="loader"></div>
-    <div id="link-container"></div>
+    <div id="link-container-wrapper">
+        <div id="loading" class="loader"></div>
+        <div id="link-container"></div>
+    </div>
 
     <div class="footer">
         © 2026 COCO MASTER PROPERTY<br>
@@ -123,8 +184,21 @@
 </div>
 
 <script>
-    // URL ที่คุณให้มา
+    // URL Web App จาก Google Apps Script ของคุณ (อันเดิม)
     const API_URL = "https://script.google.com/macros/s/AKfycbwe88eHWy0EUNzcZeBX2Z1Xi3hDBPL9WnIC4YRNPuClEAQI5pl_jNV5W0VWQeJiVeCZ-Q/exec";
+
+    // ฟังก์ชันช่วยเลือกไอคอนแบรนด์ของจริงตามชื่อปุ่ม
+    function getOfficialIcon(label) {
+        let l = label.toLowerCase();
+        if (l.includes('line')) return '<i class="fab fa-line" style="color: var(--line-color);"></i>';
+        if (l.includes('whatsapp')) return '<i class="fab fa-whatsapp" style="color: var(--whatsapp-color);"></i>';
+        if (l.includes('facebook')) return '<i class="fab fa-facebook-messenger" style="color: var(--fb-color);"></i>';
+        if (l.includes('tiktok')) return '<i class="fab fa-tiktok" style="color: var(--tiktok-color);"></i>';
+        if (l.includes('instagram')) return '<i class="fab fa-instagram" style="color: var(--ig-color);"></i>';
+        if (l.includes('โทร') || l.includes('call')) return '<i class="fas fa-phone-alt" style="color: var(--call-color);"></i>';
+        // ไอคอนเริ่มต้นกรณีหาไม่เจอ
+        return '<i class="fas fa-link" style="color: #999;"></i>'; 
+    }
 
     async function fetchLinks() {
         try {
@@ -136,29 +210,25 @@
             
             loader.style.display = 'none'; // ซ่อนตัวโหลด
 
-            data.forEach((item, index) => {
+            data.forEach((item) => {
                 const a = document.createElement('a');
                 a.href = item.URL;
                 a.className = 'link-card';
-                a.style.borderLeft = `5px solid ${item.Color || '#d4af37'}`;
+                // ไม่ใช้ item.Color จาก Sheet แล้ว เพราะเราใช้สีแบรนด์จริงแทน
                 
+                // สร้างเนื้อหาปุ่ม โดยใช้ฟังก์ชัน getOfficialIcon
                 a.innerHTML = `
-                    <div class="icon-box">${item.Icon || '🔗'}</div>
+                    <div class="icon-box">${getOfficialIcon(item.Label)}</div>
                     <div class="label-text">${item.Label}</div>
-                    <div style="font-size: 12px; opacity: 0.5;">➜</div>
+                    <div class="arrow-icon"><i class="fa-solid fa-chevron-right"></i></div>
                 `;
                 
                 container.appendChild(a);
-
-                // ใส่ Delay เพื่อให้ปุ่มค่อยๆ ลอยขึ้นมาทีละอัน
-                setTimeout(() => {
-                    a.classList.add('show');
-                }, index * 100);
             });
 
         } catch (error) {
             console.error("Error fetching data:", error);
-            document.getElementById('loading').innerHTML = "<p style='color:red'>ขออภัย ไม่สามารถโหลดข้อมูลได้</p>";
+            document.getElementById('loading').innerHTML = "<p style='color:red; font-size:0.9rem;'>โหลดข้อมูลไม่สำเร็จ กรุณารีเฟรช</p>";
         }
     }
 
