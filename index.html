@@ -26,7 +26,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ล็อคไม่ให้เลื่อนขึ้นลง */
+            overflow: hidden; /* ล็อคไม่ให้เลื่อน */
             font-family: 'Kanit', sans-serif;
             background: radial-gradient(circle at top, #1e293b, #000000);
             color: white;
@@ -36,24 +36,30 @@
         }
 
         .container {
-            width: 95%; /* ยืดหยุ่นตามหน้าจอมือถือ */
-            max-width: 650px; /* เพิ่มความกว้างสูงสุดเพื่อให้ดูสวยบนคอมพิวเตอร์ */
-            height: 100vh;
+            width: 95%;
+            max-width: 650px;
+            height: 100dvh; /* ใช้ dynamic viewport height เพื่อรองรับแถบ browser มือถือ */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 20px 15px;
+            /* ปรับระยะห่างแนวตั้ง */
+            padding: 40px 15px 10px 15px; /* เพิ่ม padding บนเป็น 40px เพื่อดันโลโก้ลงมา */
             text-align: center;
         }
 
-        /* ส่วนหัว - กระชับพื้นที่ */
-        .header-area { flex-shrink: 0; }
-        .logo-img {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+        .header-area { 
+            flex-shrink: 0; 
+            margin-bottom: 20px; /* ระยะห่างระหว่างหัวข้อกับปุ่ม */
         }
+
+        .logo-img {
+            width: 90px; /* ปรับขนาดให้เหมาะสมกับโลโก้วงกลมใหม่ */
+            height: 90px;
+            margin-bottom: 12px;
+            border-radius: 50%; /* ทำให้ขอบรูปเป็นวงกลม */
+            border: 2px solid var(--gold); /* เพิ่มขอบทองเล็กน้อยให้ดูพรีเมียม */
+            object-fit: cover;
+        }
+
         h1 {
             font-size: 1.4rem;
             margin: 0;
@@ -61,22 +67,23 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
         .subtitle {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 200;
             color: #94a3b8;
-            margin-top: 4px;
-            letter-spacing: 3px;
+            margin-top: 5px;
+            letter-spacing: 2px;
         }
 
-        /* รายการปุ่ม - ขยายเต็มความกว้าง Container */
         #link-container {
             display: flex;
             flex-direction: column;
-            gap: 10px; /* ระยะห่างระหว่างปุ่ม */
+            gap: 10px;
             flex-grow: 1;
-            justify-content: center;
+            justify-content: flex-start; /* เริ่มวางปุ่มจากด้านบน */
             width: 100%;
+            padding-top: 10px;
         }
 
         .link-card {
@@ -90,7 +97,7 @@
             text-decoration: none;
             color: white;
             transition: all 0.2s ease;
-            width: 100%; /* ให้ปุ่มกว้างเท่า Container */
+            width: 100%;
         }
 
         .link-card:hover {
@@ -99,46 +106,37 @@
             transform: translateY(-2px);
         }
 
-        .link-card:active {
-            transform: scale(0.99);
-        }
-
         .icon-box {
-            font-size: 26px; /* ขนาดไอคอนแบรนด์จริง */
-            width: 45px;
+            font-size: 24px;
+            width: 40px;
             display: flex;
             justify-content: center;
             margin-right: 15px;
         }
 
         .label-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-align: left;
             flex-grow: 1;
-            font-weight: 400;
         }
 
-        .arrow { 
-            color: rgba(255, 255, 255, 0.2); 
-            font-size: 14px; 
-        }
+        .arrow { color: rgba(255, 255, 255, 0.2); font-size: 12px; }
 
         .footer {
             flex-shrink: 0;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #475569;
-            margin-top: 15px;
+            padding-bottom: 15px; /* ลดระยะห่างด้านล่างสุด */
             letter-spacing: 1px;
         }
 
-        /* Animation โหลด */
         .loader {
             border: 3px solid rgba(255, 255, 255, 0.1);
             border-top: 3px solid var(--gold);
             border-radius: 50%;
             width: 30px; height: 30px;
             animation: spin 1s linear infinite;
-            margin: auto;
+            margin: 40px auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -147,9 +145,9 @@
 
 <div class="container">
     <div class="header-area">
-        <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Logo" class="logo-img">
+        <img src="logo.jpg" alt="HuaHin.Properties Logo" class="logo-img">
         <h1>HuaHin.Properties</h1>
-        <div class="subtitle">PREMIUM PROPERTY CATALOG</div>
+        <div class="subtitle">YOUR HOME IS OUR PRIORITY</div>
     </div>
 
     <div id="link-container">
@@ -163,10 +161,8 @@
 </div>
 
 <script>
-    // URL Web App จาก Google Sheets ของคุณ
     const API_URL = "https://script.google.com/macros/s/AKfycbwe88eHWy0EUNzcZeBX2Z1Xi3hDBPL9WnIC4YRNPuClEAQI5pl_jNV5W0VWQeJiVeCZ-Q/exec";
 
-    // ฟังก์ชันเลือกไอคอนแบรนด์อัตโนมัติตามชื่อปุ่ม
     function getIcon(label) {
         let l = label.toLowerCase();
         if (l.includes('line')) return `<i class="fab fa-line" style="color: var(--line);"></i>`;
@@ -184,14 +180,13 @@
             const data = await res.json();
             const container = document.getElementById('link-container');
             const loader = document.getElementById('loading');
-            
             if (loader) loader.remove();
 
             data.forEach(item => {
                 const a = document.createElement('a');
                 a.href = item.URL;
                 a.className = 'link-card';
-                a.target = "_blank"; // เปิดหน้าใหม่
+                a.target = "_blank";
                 a.innerHTML = `
                     <div class="icon-box">${getIcon(item.Label)}</div>
                     <div class="label-text">${item.Label}</div>
@@ -201,7 +196,7 @@
             });
         } catch (e) {
             console.error(e);
-            document.getElementById('loading').innerHTML = "<p>ไม่สามารถโหลดข้อมูลได้</p>";
+            document.getElementById('loading').innerHTML = "<p>Error loading data</p>";
         }
     }
     fetchLinks();
