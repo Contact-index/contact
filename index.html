@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact HuaHin.Properties</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -26,7 +26,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ห้ามเลื่อนหน้าจอ */
+            overflow: hidden; /* ล็อคไม่ให้เลื่อนขึ้นลง */
             font-family: 'Kanit', sans-serif;
             background: radial-gradient(circle at top, #1e293b, #000000);
             color: white;
@@ -36,42 +36,47 @@
         }
 
         .container {
-            width: 90%;
-            max-width: 380px;
-            height: 95vh; /* ใช้พื้นที่เกือบเต็มความสูงแต่ไม่เกินหน้าจอ */
+            width: 95%; /* ยืดหยุ่นตามหน้าจอมือถือ */
+            max-width: 650px; /* เพิ่มความกว้างสูงสุดเพื่อให้ดูสวยบนคอมพิวเตอร์ */
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* กระจายส่วนบน กลาง ล่าง */
-            padding: 15px 10px;
+            justify-content: space-between;
+            padding: 20px 15px;
             text-align: center;
         }
 
-        /* ส่วนหัว - ปรับขนาดให้เล็กมากเพื่อประหยัดที่ */
+        /* ส่วนหัว - กระชับพื้นที่ */
         .header-area { flex-shrink: 0; }
         .logo-img {
-            width: 60px; /* ลดขนาดโลโก้จาก 80px เหลือ 60px */
-            height: 60px;
-            margin-bottom: 5px;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
         }
         h1 {
-            font-size: 1.2rem; /* ลดขนาดชื่อลง */
+            font-size: 1.4rem;
             margin: 0;
             color: var(--gold);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         .subtitle {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 200;
             color: #94a3b8;
-            margin-bottom: 10px;
+            margin-top: 4px;
+            letter-spacing: 3px;
         }
 
-        /* รายการปุ่ม - ปรับให้กระชับ */
+        /* รายการปุ่ม - ขยายเต็มความกว้าง Container */
         #link-container {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* เว้นช่องไฟให้น้อยลง */
+            gap: 10px; /* ระยะห่างระหว่างปุ่ม */
             flex-grow: 1;
             justify-content: center;
+            width: 100%;
         }
 
         .link-card {
@@ -80,44 +85,60 @@
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 10px 15px; /* ลด padding ด้านบน-ล่าง */
+            border-radius: 14px;
+            padding: 12px 20px;
             text-decoration: none;
             color: white;
-            transition: 0.2s;
+            transition: all 0.2s ease;
+            width: 100%; /* ให้ปุ่มกว้างเท่า Container */
         }
 
-        .link-card:active { transform: scale(0.98); background: rgba(255,255,255,0.15); }
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .link-card:active {
+            transform: scale(0.99);
+        }
 
         .icon-box {
-            font-size: 22px; /* ขนาดไอคอนแบรนด์ */
-            width: 35px;
+            font-size: 26px; /* ขนาดไอคอนแบรนด์จริง */
+            width: 45px;
             display: flex;
             justify-content: center;
-            margin-right: 12px;
+            margin-right: 15px;
         }
 
         .label-text {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             text-align: left;
             flex-grow: 1;
+            font-weight: 400;
         }
 
-        .arrow { color: rgba(255,255,255,0.3); font-size: 12px; }
+        .arrow { 
+            color: rgba(255, 255, 255, 0.2); 
+            font-size: 14px; 
+        }
 
         .footer {
-            font-size: 0.65rem;
+            flex-shrink: 0;
+            font-size: 0.7rem;
             color: #475569;
-            margin-top: 10px;
+            margin-top: 15px;
+            letter-spacing: 1px;
         }
 
+        /* Animation โหลด */
         .loader {
-            border: 3px solid rgba(255,255,255,0.1);
+            border: 3px solid rgba(255, 255, 255, 0.1);
             border-top: 3px solid var(--gold);
             border-radius: 50%;
-            width: 25px; height: 25px;
+            width: 30px; height: 30px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
+            margin: auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -142,16 +163,19 @@
 </div>
 
 <script>
+    // URL Web App จาก Google Sheets ของคุณ
     const API_URL = "https://script.google.com/macros/s/AKfycbwe88eHWy0EUNzcZeBX2Z1Xi3hDBPL9WnIC4YRNPuClEAQI5pl_jNV5W0VWQeJiVeCZ-Q/exec";
 
+    // ฟังก์ชันเลือกไอคอนแบรนด์อัตโนมัติตามชื่อปุ่ม
     function getIcon(label) {
         let l = label.toLowerCase();
         if (l.includes('line')) return `<i class="fab fa-line" style="color: var(--line);"></i>`;
         if (l.includes('whatsapp')) return `<i class="fab fa-whatsapp" style="color: var(--wa);"></i>`;
-        if (l.includes('facebook')) return `<i class="fab fa-facebook-messenger" style="color: var(--fb);"></i>`;
+        if (l.includes('facebook') || l.includes('messenger')) return `<i class="fab fa-facebook-messenger" style="color: var(--fb);"></i>`;
         if (l.includes('tiktok')) return `<i class="fab fa-tiktok" style="color: var(--tk);"></i>`;
         if (l.includes('instagram')) return `<i class="fab fa-instagram" style="color: var(--ig);"></i>`;
-        return `<i class="fas fa-phone-alt" style="color: var(--gold);"></i>`;
+        if (l.includes('โทร') || l.includes('call')) return `<i class="fas fa-phone-alt" style="color: var(--gold);"></i>`;
+        return `<i class="fas fa-external-link-alt" style="color: var(--gold);"></i>`;
     }
 
     async function fetchLinks() {
@@ -159,12 +183,15 @@
             const res = await fetch(API_URL);
             const data = await res.json();
             const container = document.getElementById('link-container');
-            document.getElementById('loading').remove();
+            const loader = document.getElementById('loading');
+            
+            if (loader) loader.remove();
 
             data.forEach(item => {
                 const a = document.createElement('a');
                 a.href = item.URL;
                 a.className = 'link-card';
+                a.target = "_blank"; // เปิดหน้าใหม่
                 a.innerHTML = `
                     <div class="icon-box">${getIcon(item.Label)}</div>
                     <div class="label-text">${item.Label}</div>
@@ -173,7 +200,8 @@
                 container.appendChild(a);
             });
         } catch (e) {
-            document.getElementById('loading').innerHTML = "Error";
+            console.error(e);
+            document.getElementById('loading').innerHTML = "<p>ไม่สามารถโหลดข้อมูลได้</p>";
         }
     }
     fetchLinks();
