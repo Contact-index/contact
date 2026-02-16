@@ -6,7 +6,8 @@
     <title>Contact HuaHin.Properties</title>
     
     <meta property="og:title" content="HuaHin.Properties - The Hua Hin Property Experts">
-    <meta property="og:description" content=""Hua Hin Real Estate Experts. Professional Buy & Sell Services."">
+    
+    <meta property="og:description" content="Hua Hin Real Estate Experts. Professional Buy & Sell Services.">
     
     <meta property="og:image" content="https://contact-index.github.io/contact/fb-card.jpg">
     <meta property="og:url" content="https://contact-index.github.io/contact/">
@@ -35,7 +36,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ล็อคไม่ให้เลื่อนขึ้นลงเพื่อให้จบในหน้าเดียว */
+            overflow: hidden; /* ล็อคไม่ให้เลื่อนเพื่อให้จบในหน้าเดียว */
             font-family: 'Kanit', sans-serif;
             background: radial-gradient(circle at top, #1e293b, #000000);
             color: white;
@@ -46,11 +47,11 @@
 
         .container {
             width: 95%;
-            max-width: 650px; /* ขยายความกว้างเพื่อให้ดูสวยบนคอมพิวเตอร์ */
+            max-width: 650px; 
             height: 100dvh; 
             display: flex;
             flex-direction: column;
-            padding: 40px 15px 10px 15px; /* เว้นระยะด้านบนลงมาเพื่อให้โลโก้ไม่โดนเบียด */
+            padding: 40px 15px 10px 15px; 
             text-align: center;
         }
 
@@ -172,7 +173,6 @@
 <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwe88eHWy0EUNzcZeBX2Z1Xi3hDBPL9WnIC4YRNPuClEAQI5pl_jNV5W0VWQeJiVeCZ-Q/exec";
 
-    // ฟังก์ชันเลือกไอคอนแบรนด์จริงอัตโนมัติ
     function getIcon(label) {
         let l = label.toLowerCase();
         if (l.includes('line')) return `<i class="fab fa-line" style="color: var(--line);"></i>`;
@@ -180,7 +180,7 @@
         if (l.includes('facebook') || l.includes('messenger')) return `<i class="fab fa-facebook-messenger" style="color: var(--fb);"></i>`;
         if (l.includes('tiktok')) return `<i class="fab fa-tiktok" style="color: var(--tk);"></i>`;
         if (l.includes('instagram')) return `<i class="fab fa-instagram" style="color: var(--ig);"></i>`;
-        if (l.includes('โทร') || l.includes('call')) return `<i class="fas fa-phone-alt" style="color: var(--gold);"></i>`;
+        if (l.includes('โทร') || l.includes('call') || l.includes('phone')) return `<i class="fas fa-phone-alt" style="color: var(--gold);"></i>`;
         return `<i class="fas fa-external-link-alt" style="color: var(--gold);"></i>`;
     }
 
