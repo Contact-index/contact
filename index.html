@@ -8,8 +8,8 @@
     <meta property="og:title" content="HuaHin.Properties - Luxury Villas & Homes">
     <meta property="og:description" content="ศูนย์รวมช่องทางติดต่อ สอบถามข้อมูลโครงการและนัดชมบ้านพักตากอากาศสุดหรูในหัวหิน">
     
-    <meta property="og:image" content="https://ชื่อผู้ใช้ของคุณ.github.io/ชื่อrepository/fb-card.jpg">
-    <meta property="og:url" content="https://ชื่อผู้ใช้ของคุณ.github.io/ชื่อrepository/">
+    <meta property="og:image" content="https://contact-index.github.io/contact/fb-card.jpg">
+    <meta property="og:url" content="https://contact-index.github.io/contact/">
     
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="1200">
@@ -35,7 +35,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ล็อคไม่ให้เลื่อน */
+            overflow: hidden; /* ล็อคไม่ให้เลื่อนขึ้นลงเพื่อให้จบในหน้าเดียว */
             font-family: 'Kanit', sans-serif;
             background: radial-gradient(circle at top, #1e293b, #000000);
             color: white;
@@ -46,11 +46,11 @@
 
         .container {
             width: 95%;
-            max-width: 650px;
+            max-width: 650px; /* ขยายความกว้างเพื่อให้ดูสวยบนคอมพิวเตอร์ */
             height: 100dvh; 
             display: flex;
             flex-direction: column;
-            padding: 40px 15px 10px 15px; /* ดันโลโก้ลงมา 40px */
+            padding: 40px 15px 10px 15px; /* เว้นระยะด้านบนลงมาเพื่อให้โลโก้ไม่โดนเบียด */
             text-align: center;
         }
 
@@ -60,7 +60,7 @@
         }
 
         .logo-img {
-            width: 100px; /* ปรับขนาดโลโก้ให้เด่นขึ้นเล็กน้อย */
+            width: 100px;
             height: 100px;
             margin-bottom: 12px;
             border-radius: 50%; 
@@ -172,6 +172,7 @@
 <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwe88eHWy0EUNzcZeBX2Z1Xi3hDBPL9WnIC4YRNPuClEAQI5pl_jNV5W0VWQeJiVeCZ-Q/exec";
 
+    // ฟังก์ชันเลือกไอคอนแบรนด์จริงอัตโนมัติ
     function getIcon(label) {
         let l = label.toLowerCase();
         if (l.includes('line')) return `<i class="fab fa-line" style="color: var(--line);"></i>`;
